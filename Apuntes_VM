@@ -1,0 +1,29 @@
+**Para crear una nueva maquina virtual**
+
+      az vm create -g "NameResourceGroup" -n "VMName" -admin-user "name" -admin-password "pass"
+
+**Para generar una direccion de ip a tu VM**
+
+      az vm list-ip-addresses --resource-group ContainerCompute --name quickvm
+
+**Linea de codigo que te pone la IP directamente sin archivo JSON**
+
+      az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv
+
+**forma de crear variables
+
+      ipAddress=$(az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv)
+
+**Para que te imprima en pantalla el valor de la variable**
+
+      echo $ipAddress
+
+**Para acceder a la maquina virtual, te pedira la contraseña**
+
+ssh student@$ipAddress
+
+**Muestra informacion de la maquina virtual**
+
+     uname -mnipo  
+     uname -srv
+
