@@ -1,3 +1,11 @@
+**Para moverte en distintos directorios**
+
+	cd <path>
+	
+**Para crear nuevos directorios** 
+
+	mkdir <nombre>
+
 **Para crear una nueva maquina virtual**
 
       az vm create -g "NameResourceGroup" -n "VMName" -admin-user "name" -admin-password "pass"
