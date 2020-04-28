@@ -1,37 +1,72 @@
-**Para moverte en distintos directorios**
+**BASICOS**
 
-	cd <path>
+	**Para moverte en distintos directorios**
+
+		cd <path>
 	
-**Para crear nuevos directorios** 
+	**Para crear nuevos directorios** 
 
-	mkdir <nombre>
+		mkdir <nombre>
+		
+	**Para crear un nuevo File in Bash**
+	
+		touch <file name>. *The filename Dockerfile is case sensitive.*
+		
+	**forma de crear variables
 
-**Para crear una nueva maquina virtual**
+		ipAddress=$(az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv)
 
-      az vm create -g "NameResourceGroup" -n "VMName" -admin-user "name" -admin-password "pass"
 
-**Para generar una direccion de ip a tu VM**
+	**Para que te imprima en pantalla el valor de la variable**
 
-      az vm list-ip-addresses --resource-group ContainerCompute --name quickvm
+		echo $ipAddress
+		
+	**Abrir el editor grafico embebido**
+	
+		code .
 
-**Linea de codigo que te pone la IP directamente sin archivo JSON**
+**VM**
 
-      az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv
+	**Para crear una nueva maquina virtual**
+		
+		az vm create -g "NameResourceGroup" -n "VMName" -admin-user "name" -admin-password "pass"
 
-**forma de crear variables
+	**Para generar una direccion de ip a tu VM**
 
-      ipAddress=$(az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv)
+		az vm list-ip-addresses --resource-group ContainerCompute --name quickvm
 
-**Para que te imprima en pantalla el valor de la variable**
+	**Linea de codigo que te pone la IP directamente sin archivo JSON**
 
-      echo $ipAddress
+		az vm list-ip-addresses --resource-group ContainerCompute --name quickvm --query '[].{ip:virtualMachine.network.publicIpAddresses[0].ipAddress}' --output tsv
 
-**Para acceder a la maquina virtual, te pedira la contraseña**
 
-ssh student@$ipAddress
+	**Para acceder a la maquina virtual, te pedira la contraseña**
 
-**Muestra informacion de la maquina virtual**
+		ssh student@$ipAddress
 
-     uname -mnipo  
-     uname -srv
+	**Muestra informacion de la maquina virtual**
+
+		uname -mnipo  
+		uname -srv
+
+**DOTNET**
+
+	**create a new .NET console application**
+
+		dotnet new console --name ipcheck --output .  <-- importante el punto "."
+		
+	**Para ejecutar app y validar**
+	
+		dotnet run
+		
+**Container Registry**
+
+	**Mirar lista de container Registries**
+	
+		az acr list
+		
+	**Mostrar el container registry mas reciente**
+	
+		az acr list --query "max_by([], &creationDate).name" --output tsv
+	
 
