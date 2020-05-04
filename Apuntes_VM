@@ -68,5 +68,9 @@
 	**Mostrar el container registry mas reciente**
 	
 		az acr list --query "max_by([], &creationDate).name" --output tsv
+		
+
+dotnet dev-certs https --trust para comprobar que una app es segura
+
 	
 
